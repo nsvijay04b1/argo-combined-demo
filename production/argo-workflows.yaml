@@ -1,22 +1,22 @@
-apiVersion: argoproj.io/v1alpha1
+apiVersion: nsvijay04b1.io/v1alpha1
 kind: Application
 metadata:
   name: argo-workflows
   namespace: argocd
   finalizers:
-    - resources-finalizer.argocd.argoproj.io
+    - resources-finalizer.argocd.nsvijay04b1.io
 spec:
   project: production
   source:
     path: charts/argo-workflows
-    repoURL: https://github.com/argoproj/argo-helm.git
+    repoURL: https://github.com/nsvijay04b1/argo-helm.git
     targetRevision: HEAD
     helm:
       values: |
         server: 
           ingress:
             hosts:
-              - acme.com
+              - argo-workflows.localhost
             enabled: true
             ingressClassName: nginx
         controller:
